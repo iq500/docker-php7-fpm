@@ -1,12 +1,12 @@
 FROM alpine:3.12
 
-ENV PHP_VERSION=7.4.9-r0 \
-   PHP_IGBINARY_VERSION=3.1.5-r0 \
-   PHP_MCRYPT_VERSION=1.0.3-r2 \
+ENV PHP_VERSION=7.4.16-r0 \
+   PHP_IGBINARY_VERSION=3.2.2_rc1-r0 \
+   PHP_MCRYPT_VERSION=1.0.4-r0 \
    PHP_MEMCACHED_VERSION=3.1.5-r2 \
-   PHP_REDIS_VERSION=5.3.1-r0 \
-   PHP_AMQP_VERSION=1.10.2-r1 \
-   PHP_MONGODB_VERSION=1.8.0-r0
+   PHP_REDIS_VERSION=5.3.4-r0 \
+   PHP_AMQP_VERSION=1.11.0_beta-r0 \
+   PHP_MONGODB_VERSION=1.9.1-r1
 
 ENV PHP_MEMORY_LIMIT=256M \
    PHP_PRECISION=-1 \
@@ -130,7 +130,9 @@ RUN apk add --update --no-cache \
         php7-xsl=${PHP_VERSION} \
         php7-zip=${PHP_VERSION} \
         php7-fpm=${PHP_VERSION} \
-        php7=${PHP_VERSION}
+        php7=${PHP_VERSION} \
+        composer \
+        php7-pecl-xdebug
 
 RUN rm -rf /etc/php7/php.ini && \
     mkdir /var/www
